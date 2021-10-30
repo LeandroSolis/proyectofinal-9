@@ -17,10 +17,15 @@ router
 router
   .route('/api/note/:id')
   .get((req, res) => {
-    res.send('Una nota por Id');
+    Note.find((err, notes) => {
+      res.send('Una nota por Id');
+    })
+
   })
   .put((req, res) => {
-    res.send('Actualizar nota');
+    Note.find((err, notes) => {
+      res.send('Actualizar nota');
+    })
   })
   .delete((req, res) => {
     res.send('Borrar nota');
