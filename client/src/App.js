@@ -1,7 +1,19 @@
 //app.
-import {useState } from 'react';
+import {useState, useEffect } from 'react';
 import axios from 'axios';
+import Nota from './Nota'
 const App = () => {
+
+  const[notes, setNotes] = useState([]);
+
+  useEffect(() => {
+  console.log('Vamos a buscar todas las notas');
+  axios.get('http://localhost:4000/api/notes')
+  .then(res => {
+    console.log(res.data);
+    setNotes(res.data);
+  });
+}, []);
 
    const[title, setTitle] = useState('');
    const[text, setText] = useState('');
@@ -12,12 +24,14 @@ const App = () => {
     console.log(title, text);
     const note = {title, text};
     axios.post('http://localhost:4000/api/notes', note)
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data);
+      setNotes([res.data, ...notes]);
+    })
     .catch(err => console.log(err));
   };
   return(
     <div className="app">
-
     <div className="agregar las notas">
     <form onSubmit={handleSubmit}>
      <label>titulo</label>
@@ -34,6 +48,10 @@ const App = () => {
      </form>
     </div>
     <div className="Notas">
+    <h1>Lista de notas</h1>
+    {notes.map(note => {
+      return <Nota title={note.title} text={note.text} />
+    })}
     </div>
     </div>
   );
