@@ -50,7 +50,7 @@ const App = () => {
     <div className="Notas">
     <h1>Lista de notas</h1>
     {notes.map(note => {
-      return <Nota title={note.title} text={note.text} />
+      return <Nota key={note._id} title={note.title} text={note.text} />
     })}
     </div>
     </div>
