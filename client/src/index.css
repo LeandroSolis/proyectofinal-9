@@ -13,9 +13,18 @@ code {
 }
 
 .notas{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
 
 }
 
+.nota{
+  border: 1px solid black;
+  padding:
+}
+
 .notas div{
-  
+
 }

@@ -6,6 +6,34 @@ const App = () => {
 
   const[notes, setNotes] = useState([]);
 
+  const deleteNote = id => {
+    axios.delete('http://localhost:4000/api/notes/' + id)
+    .then(res => {
+    const notasActualizadas = notes.filter(note => id !== note._id);
+    console.log(notasActualizadas);
+    setNotes(notasActualizadas);
+  })
+  .catch(err=> console.log(err));
+  };
+
+const updateNote = id => {
+  console.log(id);
+  const tituloActualizado = prompt('ingrese nuevo titulo');
+  const textoActualizado = prompt('ingrese nuevo texto');
+  const datos ={
+    title: tituloActualizado,
+    text: textoActualizado
+  };
+  axios.put('http://localhost:4000/api/notes/' + id, datos )
+  .then(res => {
+    const notasActualizadas = notes.map(note => (
+      note._id === id ? res.data : note
+    ));
+    setNotes(notasActualizadas);
+  })
+  .catch(err => console.log(err));
+};
+
   useEffect(() => {
   console.log('Vamos a buscar todas las notas');
   axios.get('http://localhost:4000/api/notes')
@@ -27,6 +55,8 @@ const App = () => {
     .then(res => {
       console.log(res.data);
       setNotes([res.data, ...notes]);
+      setTitle('');
+      setText('');
     })
     .catch(err => console.log(err));
   };
@@ -48,9 +78,15 @@ const App = () => {
      </form>
     </div>
     <div className="Notas">
-    <h1>Lista de notas</h1>
+    Lista de notas
     {notes.map(note => {
-      return <Nota key={note._id} title={note.title} text={note.text} />
+      return <Nota
+      updateNote={updateNote}
+      deleteNote={deleteNote}
+      key={note._id}
+      id={note._id}
+      title={note.title} text={note.text} />
+
     })}
     </div>
     </div>

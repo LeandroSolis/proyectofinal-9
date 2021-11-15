@@ -31,7 +31,19 @@ router
   });
 })
 .put((req, res) => {
-  res.send('Actualizar nota');
+  const id = req.params.id;
+  const { title, text } = req.body;
+  const note = { title, text };
+  const options = {
+    new: true,
+    omitUndefined: true
+  };
+
+  Note
+    .findByIdAndUpdate(id, note, options)
+    .exec((err, note) => {
+      res.json(note);
+    });
 })
 .delete((req, res) => {
   Note.findByIdAndRemove(req.params.id, (err) => {
