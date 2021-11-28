@@ -42,6 +42,7 @@ Header {
 .Notas{
   text-align: center;
   margin-top: 12px;
+  position: absolute;
 }
 
 .fixed-bottom{
