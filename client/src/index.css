@@ -30,13 +30,24 @@ code {
 }
 Header {
   margin: auto;
-
+  font-size: 4vh;
+  padding-left: 10vh;
 }
-.card{
+.note{
   width: 18rem;
   margin: 1vh;
-  float: right;
+  align-items: center;
+  float: left;
 }
 .Notas{
   text-align: center;
+  margin-top: 12px;
 }
+
+.fixed-bottom{
+  margin-top: 10vh;
+}
+.botones{
+  width: 100%;
+}
+
