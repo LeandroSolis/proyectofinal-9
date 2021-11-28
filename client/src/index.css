@@ -11,6 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.Notas{
+  text-align: center;
+}
 
 .notas{
   display:flex;
@@ -21,10 +24,19 @@ code {
 }
 
 .nota{
+  margin-top: 10px;
   border: 1px solid black;
-  padding:
+  border-radius: 8px;
 }
+Header {
+  margin: auto;
 
-.notas div{
-
+}
+.card{
+  width: 18rem;
+  margin: 1vh;
+  float: right;
+}
+.Notas{
+  text-align: center;
 }

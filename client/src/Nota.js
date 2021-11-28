@@ -1,13 +1,15 @@
 const Nota = props => {
-  const {title, text, id, deleteNote, updateNote} = props;
+  const { title, text, id, deleteNote, updateNote } = props;
   return (
-    <div className="nota">
-      <h2>{title}</h2>
-      <p>{text}</p>
-      <p>{id}</p>
-      <button onClick={() => deleteNote(id)}>Borrar</button>
-      <button onClick={() => updateNote(id)}>Editar</button>
+    <div class="card">
+      <div className="nota">
+        <h2 class="card-header">{title}</h2>
+        <p class="p-3">{text}</p>
+        <button type="button" class="btn btn-danger" onClick={() => deleteNote(id)}>Borrar</button>
+        <button type="button" class="btn btn-dark" onClick={() => updateNote(id)}>Editar</button>
+      </div >
     </div>
+
   );
 };
 
