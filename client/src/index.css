@@ -31,7 +31,7 @@ code {
 Header {
   margin: auto;
   font-size: 4vh;
-  padding-left: 10vh;
+
 }
 .note{
   width: 18rem;
@@ -40,15 +40,45 @@ Header {
   float: left;
 }
 .Notas{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
   text-align: center;
   margin-top: 12px;
-  position: absolute;
+  /* position: absolute; */
+  /* margin-left: 30px; */
 }
 
-.fixed-bottom{
-  margin-top: 10vh;
+.gh-bottom{
+  text-align: center;
 }
 .botones{
   width: 100%;
 }
 
+.ListNotas{
+  align-items: center;
+  text-align: center;
+}
+
+form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+label{
+  padding: 0px 7px;
+}
+
+.bottom{
+  align-items: center;
+
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
